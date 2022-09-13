@@ -13,3 +13,5 @@ Instructions to test the app:
 - After exporting the Jar, run BookingAPI on the tomcat server
 - Run the APIClient class (small APIClient created for testing purposes) as a java application and follow the instructions on EclipseIDE console.
 - After testing succesfully any of the functions, if you want to test any other, the APIClient must be ran againa s java application.
+
+To maintain 99.9% to 100% availability for the API, it can be deployed in 2 servers (primary and secondary server) and implement a load balancer to manage user requests and distribute the request between the 2 servers. Threads can also be implemented in order to manage the amount of user requests.
