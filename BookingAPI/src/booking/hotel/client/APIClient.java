@@ -7,8 +7,18 @@ import java.net.URLEncoder;
 import java.util.Scanner;
 import org.json.JSONObject;
 
+/**
+ * A sample API client to test the API with user input through console
+ * @author Eduardo
+ *
+ */
 public class APIClient {
 	
+	/**
+	 * The main method that reads the user input
+	 * @param args
+	 * @throws IOException
+	 */
 	public static void main(String[] args) throws IOException {
 		Scanner scanner = new Scanner(System.in);
 		
@@ -85,6 +95,12 @@ public class APIClient {
 		System.out.println("Thanks for using our services.");
 	}
 	
+	/**
+	 * Method that returns the room availability
+	 * @param roomNumber, The room number that's being checked for availability
+	 * @return The room's information with the availability, true if available, false if not
+	 * @throws IOException, throws an IOException if there was a problem reading the user input
+	 */
 	public static String getRoomAvailability(String roomNumber) throws IOException {
 		HttpURLConnection connection = (HttpURLConnection) new URL("http://localhost:8081/BookingAPI/room/" + roomNumber).openConnection();
 		
@@ -106,6 +122,15 @@ public class APIClient {
 		return null;
 	}
 	
+	/**
+	 * Method that sets the room reservation, modifies it or cancels it
+	 * @param roomNumber, the number of the room
+	 * @param name, name of the user
+	 * @param ID, ID of the user
+	 * @param dateFrom, beggingin date of reservation
+	 * @param dateTo, ending date of reservation
+	 * @throws IOException, throws an exception if there is an issue with user input
+	 */
 	public static void setRoomReservation(String roomNumber, String name, String ID,  String dateFrom, String dateTo) throws IOException{
 		HttpURLConnection connection = (HttpURLConnection) new URL("http://localhost:8081/BookingAPI/room/" + roomNumber).openConnection();
 

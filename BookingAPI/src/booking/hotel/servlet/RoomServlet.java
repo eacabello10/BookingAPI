@@ -17,11 +17,22 @@ import booking.hotel.classes.Room;
 import booking.hotel.classes.User;
 import booking.hotel.data.Datastore;
 
+/**
+ * The web servlet for the Booking API
+ * @author Eduardo
+ *
+ */
 @WebServlet("/RoomServlet")
 public class RoomServlet extends HttpServlet {
 
+	/**
+	 * Serial variable for the servlet
+	 */
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * The Get method for the API
+	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		
 		String requestUrl = request.getRequestURI();
@@ -42,6 +53,9 @@ public class RoomServlet extends HttpServlet {
 		}
 	}
 	
+	/**
+	 * The post Method for the API
+	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
 		int number = Integer.parseInt(request.getParameter("roomNumber"));

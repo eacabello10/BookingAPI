@@ -15,8 +15,14 @@ import booking.hotel.classes.User;
  */
 public class Datastore {
 
-	//Map of rooms.
+		/**
+		 * Map of rooms.
+		 */
 		private Map<Integer, Room> roomMap = new HashMap<>();
+		
+		/**
+		 * Map of reservations.
+		 */
 		private Map<Integer, Reservation> reservevationMap = new HashMap<>();
 		
 		private static Datastore instance = new Datastore();
@@ -24,7 +30,9 @@ public class Datastore {
 			return instance;
 		}
 
-		//private constructor so people know to use the getInstance() function instead
+		/**
+		 * private constructor so people know to use the getInstance() function instead
+		 */
 		private Datastore(){
 			//dummy data
 			roomMap.put(50, new Room(50, true));
@@ -36,22 +44,44 @@ public class Datastore {
 			roomMap.get(55).setReservation(reservation);
 		}
 
+		/**
+		 * Method that returns a room given a room number
+		 * @param number, the number of the room
+		 * @return A Room object
+		 */
 		public Room getRoom(int number) {
 			return roomMap.get(number);
 		}
 
+		/**
+		 * Method that inserts a Room into the map
+		 * @param room, the room to be added to the map
+		 */
 		public void putRoom(Room room) {
 			roomMap.put(room.getNumber(), room);
 		}
 		
+		/**
+		 * Method that returns a reservation
+		 * @param roomNumber, the room number that has the reservation
+		 * @return The reservation tied to the room number
+		 */
 		public Reservation getReservation(int roomNumber) {
 			return reservevationMap.get(roomNumber);
 		}
 		
+		/**
+		 * Method that inserts a reservation on the reservation map
+		 * @param reservation, the reservation to add to the map
+		 */
 		public void putReservation(Reservation reservation) {
 			reservevationMap.put(reservation.getReservedRoom().getNumber(), reservation);
 		}
 		
+		/**
+		 * Method that removes a reservation from the reservation map
+		 * @param roomNumber, the room number linked to the reservation that will be canceled
+		 */
 		public void removeReservation(int roomNumber) {
 			reservevationMap.remove(roomNumber);
 			Room room = roomMap.get(roomNumber);
